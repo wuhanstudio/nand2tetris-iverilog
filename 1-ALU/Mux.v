@@ -22,7 +22,7 @@ And and_2(nota, b_sel, and2_out);
 And and_3(a, notb, and3_out);
 And and_4(and3_out, not_sel, and4_out);
 And and_5(a, b, ab);
-Or or_1(and3_out, and4_out, or1_out);
+Or or_1(and2_out, and4_out, or1_out);
 Or or_2(or1_out, ab, out);
 
 endmodule

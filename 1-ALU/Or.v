@@ -15,6 +15,6 @@ wire n_a, n_b;
 
 Not not_a(a, n_a);
 Not not_b(b, n_b);
-nand(out, n_a, n_b);
+Nand Nand_1(n_a, n_b, out);
 
 endmodule

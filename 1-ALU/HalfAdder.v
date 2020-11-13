@@ -11,7 +11,7 @@ module HalfAdder(
 
 // your implementation comes here:
 
-
-
+Xor Xor_1(a, b, sum);
+And And_1(a, b, carry);
 
 endmodule
