@@ -1,4 +1,4 @@
-## Step 3 - CPU
+## Step 2 - CPU
 
 As always, try:
 
