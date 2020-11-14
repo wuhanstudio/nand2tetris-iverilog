@@ -2,15 +2,21 @@
 
 - Some may ask how many lines of code are required to design a simple programmable CPU?
 
-- The answer is **less than 350 lines of verilog code**.
+- The answer is **less than 350 lines of verilog code** in 16 files.
 
 ```
-Following instructions in this repo, you'll build a 16-bit blinky CPU that runs on real-world FPGAs, starting from a single Nand gate.
+Starting from a single Nand gate, you'll build a 16-bit blinky CPU that runs on real-world FPGAs.
 ```
 
 ### Prerequisites
 
 A small laptop is enough for this project. No extra hardware required.
+
+Software to be installed:
+
+- Make
+- iverilog
+- gtkwave
 
 If you'd like to run this CPU on real FPGAs, here's the synthesis report in Lattice Diamond:
 

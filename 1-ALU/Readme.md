@@ -1,7 +1,57 @@
-## ALU.v
+## Step 2 - ALU
+We'll use what we have built in the last section to build an ALU. To accomplish this part, try:
+
+```
+make test
+```
+
+you should see:
+
+```
+--- MUX PASS ---
+--- MUX16 PASS ---
+--- NOT16 PASS ---
+--- AND16 PASS ---
+--- OR8WAY PASS ---
+--- HALFADDER PASS ---
+--- FULLADDER PASS ---
+--- ADD16 PASS ---
+--- ALU PASS ---
+
+--- ALL PASS ---
+```
+
+To make this happen, you need to implement several gates (around 10 lines of code each):
+
+- Mux.v
+- Not16.v
+- And16.v
+- Mux16.v
+- Or8Way.v
+- HalfAdder.v
+- FullAdder.v
+- Add16.v
+- ALU.v
+
+Still, you can test them one by one:
+
+```
+make mux_test 
+make mux16_test 
+make not16_test 
+make and16_test 
+make or8way_test 
+make halfadder_test 
+make fulladder_test 
+make add16_test 
+make alu_test
+```
+
+### What is ALU?
+
 The ALU (Arithmetic Logic Unit).
 
-![](ALU.png)
+![](img/ALU.png)
 
 Computes one of the following functions: x+y, x-y, y-x, 0, 1, -1, x, y, -x, -y, !x, !y, x+1, y+1, x-1, y-1, x&y, x|y on two 16-bit inputs, according to 6 input bits denoted zx,nx,zy,ny,f,no. In addition, the ALU computes two 1-bit outputs: if the ALU output == 0, zr is set to 1; otherwise zr is set to 0; if the ALU output < 0, ng is set to 1; otherwise ng is set to 0.
 
@@ -16,19 +66,6 @@ Implementation: the ALU logic manipulates the x and y inputs and operates on the
 * if (out == 0) set zr = 1
 * if (out < 0) set ng = 1
 
-## ALU_tb.v
+-----
 
-Testbench performs some operations with ALU and generates `ALU.out`, which can be compared to `ALU.cmp`.
-
-![](ALU_tb.png)
-
-## Project
-* Implement the ALU and all needed submodules (Add16, And16, And, FullAdder, HalfAdder, Mux16, Mux, Not16, Not, Or8Way, Or, Xor).
-
-Use translation Guide at `00_Requirement/Xor` to see how HDL-files translate into verilog.
-  
-**Note:** Nand is considered primitive and thus there is no need to implement it.
-
-* Simulate your implementation with the supplied Testbench `ALU_tb.v`.
-
-* Verify by comparing `ALU.out` with `ALU.cmp`.
+**Congratulations**, you are now ready to build your CPU in the next section.
