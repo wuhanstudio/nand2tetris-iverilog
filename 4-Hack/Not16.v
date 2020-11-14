@@ -5,8 +5,8 @@
 `default_nettype none
 
 module Not16(
-	input [15:0] in,
-	output [15:0] out
+	input wire[15:0] in,
+	output wire[15:0] out
 );
 
 Not Not0(in[0], out[0]);

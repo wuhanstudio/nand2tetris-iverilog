@@ -5,8 +5,8 @@
 `default_nettype none
 
 module Or8Way(
-	input [7:0] in,
-	output out
+	input wire[7:0] in,
+	output wire out
 );
 
 wire out0, out1, out2, out3, out4, out5;
