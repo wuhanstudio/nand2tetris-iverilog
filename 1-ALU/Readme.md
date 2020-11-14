@@ -1,4 +1,4 @@
-## Step 2 - ALU
+## Step 1 - ALU
 We'll use what we have built in the last section to build an ALU. To accomplish this part, try:
 
 ```
