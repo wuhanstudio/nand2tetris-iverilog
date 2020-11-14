@@ -1,0 +1,46 @@
+[*]
+[*] GTKWave Analyzer v3.3.98 (w)1999-2019 BSI
+[*] Thu Jul  2 10:26:03 2020
+[*]
+[dumpfile] "/home/micha/git/gitlab/nand2tetris/13_hack-final/Hack1/Hack1_tb.vcd"
+[dumpfile_mtime] "Thu Jul  2 10:25:41 2020"
+[dumpfile_size] 520155
+[savefile] "/home/micha/git/gitlab/nand2tetris/13_hack-final/Hack1/Hack1_tb.gtkw"
+[timestart] 0
+[size] 1269 520
+[pos] 8 22
+*-5.000000 1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] Hack1_tb.
+[treeopen] Hack1_tb.HACK1.
+[sst_width] 238
+[signals_width] 166
+[sst_expanded] 1
+[sst_vpaned_height] 84
+@200
+-CLOCK
+@28
+Hack1_tb.clk_in
+Hack1_tb.HACK1.clk
+@200
+-IN/OUT
+@28
+Hack1_tb.but[1:0]
+@c00028
+Hack1_tb.led[1:0]
+@28
+(0)Hack1_tb.led[1:0]
+(1)Hack1_tb.led[1:0]
+@1401200
+-group_end
+@200
+-CPU
+@22
+Hack1_tb.HACK1.CPU.pc[15:0]
+Hack1_tb.HACK1.CPU.instruction[15:0]
+Hack1_tb.HACK1.CPU.regA[15:0]
+Hack1_tb.HACK1.CPU.regD[15:0]
+Hack1_tb.HACK1.CPU.outM[15:0]
+@29
+Hack1_tb.HACK1.CPU.loadM
+[pattern_trace] 1
+[pattern_trace] 0
