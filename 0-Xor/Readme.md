@@ -1,5 +1,5 @@
 
-# Step 1 - Xor
+# Step 0 - Xor
 
 To accomplish this part, try:
 
