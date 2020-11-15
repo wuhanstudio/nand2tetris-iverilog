@@ -9,9 +9,9 @@
 `default_nettype none
 
 module Nand(
-    input a,
-    input b,
-    output out
+    input  wire  a,
+    input  wire  b,
+    output wire out
 );
 
 // your implementation comes here:
