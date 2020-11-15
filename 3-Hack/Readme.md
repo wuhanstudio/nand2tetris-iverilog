@@ -1,6 +1,133 @@
 ## Step 3 - Computer
 Unfortunately, there is no test file, but you can test it on your real hardware.
 
+### Reset.v
+
+```
+/**
+ * The module rst delivers a reset signal at power up which
+ * is clocked by clk.
+ *
+ * The timing diagram should be:
+ * -------------------------------------------
+ * clk     0 | 1 | 0 | 1 | 0 | 1 | 0 | 1 ...
+ * -------------------------------------------
+ * reset   0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 ...
+ * -------------------------------------------
+ */
+
+module Reset(
+    input  wire clk,
+    output wire reset
+);
+
+	// your implementation comes here:
+
+    // remember that you did it
+    reg done = 0;
+    always @(posedge clk)
+        done <= 1;
+
+    // reset it on start
+    reg reset_r = 0;
+    always @(posedge clk) begin
+        if (done==0) reset_r <=1;
+        else reset_r <= 0;
+	end
+
+    assign reset = reset_r;
+
+endmodule
+```
+
+### Rom.v
+
+```
+/**
+ * The module rom provides access to the instruction memory
+ * of hack. The instruction memory is read only (ROM) and
+ * preloaded with 4Kx16bit of Hackcode.
+ * 
+ * The signal data (16bit) provides the instruction at memory address
+ * data = ROM[address]
+ */
+
+module ROM(
+    input  wire [15:0] address,
+    output wire [15:0] data        
+);
+
+    // your implementation comes here:
+
+    // ROM file of hack
+    parameter ROMFILE = "./blinky.hack";
+    
+    reg [15:0] regROM [0:1023];
+    assign data = regROM[address];
+    initial begin
+        $readmemb(ROMFILE,regROM);
+    end
+
+endmodule
+```
+
+### Memory.v
+
+```
+/*
+ * The module mem provides access to memory RAM 
+ * and memory mapped IO
+ * In our Minimal-Hack-Project we will use 4Kx16 Bit RAM
+ * 
+ * address | memory
+ * ----------------
+ * 0-4047  | RAM
+ * 8192    | but
+ * 8193    | led
+ *
+ * WRITE:
+ * When load is set to 1, 16 bit dataW are stored to Memory address
+ * at next clock cycle. M[address] <= dataW
+ * READ:
+ * dataR provides data stored in Memory at address.
+ * dataR = M[address]
+ *
+ */
+
+module Memory(
+    input  wire clk,
+    input  wire [15:0] address,
+    input  wire [15:0] dataW,
+    output wire [15:0] dataR,
+    input  wire load,
+    input  wire [1:0] but,
+    output wire [1:0] led
+);
+
+    // your implementation comes here:
+
+    // Read Memory    
+    assign dataR =  (address[13]==0)? regRAM[address[11:0]] : memGPIO;
+    wire [15:0] memGPIO;
+    assign memGPIO =  (address[0]==0)? regLED : but;
+
+    // Write to RAM
+    reg [15:0] regRAM [0:8191];
+    always @(posedge clk) begin
+        if (load & (address[13]==0)) regRAM[address[11:0]] <= dataW;
+    end
+
+    // leds
+    assign led = regLED[1:0];
+    reg [15:0] regLED = 0;
+    always @(posedge clk) begin
+        if (load & (address==8192)) regLED <= dataW;
+        else regLED <= regLED;
+    end
+
+endmodule
+```
+
 The last file to accomplish.
 
 ### Hack.v

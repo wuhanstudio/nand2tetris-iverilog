@@ -104,4 +104,4 @@ The Hack CPU (Central Processing unit), consisting of an ALU, two registers name
 
 ----
 
-**Congratulations**, let's move on to the last of our journey.
+**Congratulations**, let's move on to the last section of our journey.

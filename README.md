@@ -2,7 +2,7 @@
 
 - Some may ask how many lines of code are required to design a simple programmable CPU?
 
-- The answer is **less than 350 lines of verilog code** in 16 files.
+- The answer is **less than 350 lines of verilog code**.
 
 ```
 Starting from a single Nand gate, you'll build a 16-bit blinky CPU that runs on real-world FPGAs.
@@ -79,6 +79,9 @@ A working 16-bit CPU:
 
 A programmable computer with input (buttons) and output (LEDs):
 
+- Reset.v
+- Memory.v
+- Rom.v
 - Hack.v
 
 ![](./3-Hack/img/Hack1.png)
