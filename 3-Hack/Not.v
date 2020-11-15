@@ -9,6 +9,8 @@ module Not(
     output wire out
 );
 
+// your implementation comes here:
+
 Nand Nand_1(in, in, out);
 
 endmodule

@@ -9,6 +9,8 @@ module Not16(
     output [15:0] out
 );
 
+// your implementation comes here:
+
 Not Not0(in[0], out[0]);
 Not Not1(in[1], out[1]);
 Not Not2(in[2], out[2]);

@@ -11,6 +11,8 @@ module Or(
     output wire out
 );
 
+// your implementation comes here:
+
 wire n_a, n_b;
 
 Not not_a(a, n_a);

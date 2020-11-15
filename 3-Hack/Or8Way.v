@@ -9,6 +9,8 @@ module Or8Way(
     output out
 );
 
+// your implementation comes here:
+
 wire out0, out1, out2, out3, out4, out5;
 
 Or Or_0(in[0], in[1], out0);

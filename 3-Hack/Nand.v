@@ -14,6 +14,8 @@ module Nand(
     output out
 );
 
+// your implementation comes here:
+
 nand(out,a,b);
 
 endmodule

@@ -38,6 +38,7 @@ xor_test: tb/Xor_tb.v Xor.v Not.v And.v Or.v Nand.v
 	@echo "--- XOR PASS ---"
 
 test: nand_test not_test and_test or_test xor_test
+	@echo ""
 	@echo "--- ALL PASS ---\n"
 
 clean:

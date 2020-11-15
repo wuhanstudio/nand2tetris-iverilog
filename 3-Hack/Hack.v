@@ -5,7 +5,9 @@ module Hack(						//Olimex iCEHX8-EVB
     input wire [1:0] but,			//buttons	(0 if pressed, 1 if released)
 	output reg [1:0] led			//leds 		(0 off, 1 on)
 );
-	
+
+	// your implementation comes here:
+
 	// ROM file of hack
 	parameter ROMFILE = "./blinky.hack";
 

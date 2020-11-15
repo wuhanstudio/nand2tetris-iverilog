@@ -10,6 +10,8 @@ module Xor(
     output wire out
 );
 
+// your implementation comes here:
+
 // assign out = a ^ b;
 
 wire n_a, n_b, n_a_b, n_b_a;

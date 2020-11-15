@@ -34,6 +34,9 @@ module CPU(
     output wire [15:0] addressMW,   // Address in data memory (of M) to write
     output reg [15:0] pc            // address of next instruction
 );
+
+    // your implementation comes here:
+
     reg loadM;
     assign writeM = loadM;
     assign addressMR = regAn;
