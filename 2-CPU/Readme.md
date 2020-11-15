@@ -14,6 +14,8 @@ And make sure you see:
 --- ALL PASS ---
 ```
 
+**When testing, becareful with the difference between LF (Linux) and CRLF (Windows).**
+
 There is only a single file you need to implement in this section:
 
 - CPU.v

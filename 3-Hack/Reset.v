@@ -12,7 +12,7 @@
 
 module Reset(
     input  wire clk,
-    output reg reset
+    output wire reset
 );
 
 	// your implementation comes here:
@@ -23,10 +23,12 @@ module Reset(
         done <= 1;
 
     // reset it on start
-    reg reset = 0;
+    reg reset_r = 0;
     always @(posedge clk) begin
-        if (done==0) reset <=1;
-        else reset <= 0;
+        if (done==0) reset_r <=1;
+        else reset_r <= 0;
 	end
+
+    assign reset = reset_r;
 
 endmodule
