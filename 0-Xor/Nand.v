@@ -13,5 +13,7 @@ module Nand(
 	input b,
 	output out
 );
-	nand(out,a,b);
+
+nand(out,a,b);
+
 endmodule
