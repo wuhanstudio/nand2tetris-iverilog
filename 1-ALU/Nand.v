@@ -9,9 +9,11 @@
 `default_nettype none
 
 module Nand(
-	input wire a,
-	input wire b,
-	output wire out
+    input a,
+    input b,
+    output out
 );
-	nand(out,a,b);
+
+nand(out,a,b);
+
 endmodule

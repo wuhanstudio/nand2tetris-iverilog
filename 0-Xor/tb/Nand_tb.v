@@ -11,15 +11,15 @@ module Nand_tb();
         .a(a),
         .b(b),
         .out(out)
-      );
+    );
 
     task display;
         #1 $fwrite(file, "| %1b | %1b | %1b |\n", a,b,out);
-      endtask
+    endtask
       
-      initial begin
-          $dumpfile("Nand_tb.vcd");
-          $dumpvars(0, Nand_tb);
+    initial begin
+        $dumpfile("Nand_tb.vcd");
+        $dumpvars(0, Nand_tb);
         file = $fopen("Nand.out","w");
         $fwrite(file, "| a | b |out|\n");
         

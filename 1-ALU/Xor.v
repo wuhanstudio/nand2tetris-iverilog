@@ -5,9 +5,9 @@
 `default_nettype none
 
 module Xor(
-	input wire a,
-	input wire b,
-	output wire out
+    input wire a,
+    input wire b,
+    output wire out
 );
 
 // assign out = a ^ b;

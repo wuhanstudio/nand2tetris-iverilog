@@ -6,10 +6,10 @@
 `default_nettype none
 
 module Mux(
-	input wire a,
-	input wire b,
-	input wire sel,
-	output wire out
+    input wire a,
+    input wire b,
+    input wire sel,
+    output wire out
 );
 
 wire ab, nota, notb, not_sel, b_sel, and2_out, and3_out, and4_out, and5_out, or1_out;

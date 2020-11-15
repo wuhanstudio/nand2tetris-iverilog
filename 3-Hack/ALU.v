@@ -22,7 +22,7 @@
 // if (out < 0) set ng = 1
 
 `default_nettype none
-module alu(
+module ALU(
 	input wire [15:0] x,		// input x (16 bit)
 	input wire [15:0] y,		// input y (16 bit)
     input wire zx, 				// zero the x input?

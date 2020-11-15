@@ -7,9 +7,9 @@
 `default_nettype none
 
 module And(
-	input wire a,
-	input wire b,
-	output wire out
+    input wire a,
+    input wire b,
+    output wire out
 );
 
 // your implementation comes here:

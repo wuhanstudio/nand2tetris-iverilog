@@ -6,9 +6,9 @@
 `default_nettype none
 
 module Or(
-	input wire a,
-	input wire b,
-	output wire out
+    input wire a,
+    input wire b,
+    output wire out
 );
 
 wire n_a, n_b;

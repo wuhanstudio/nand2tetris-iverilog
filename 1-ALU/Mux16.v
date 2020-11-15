@@ -6,10 +6,10 @@
 `default_nettype none
 
 module Mux16(
-	input [15:0] a,
-	input [15:0] b,
-   	input sel,
-	output [15:0] out
+    input [15:0] a,
+    input [15:0] b,
+    input sel,
+    output [15:0] out
 );
 
 // your implementation comes here:
