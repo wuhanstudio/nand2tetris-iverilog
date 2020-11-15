@@ -24,138 +24,66 @@ module CPU(
     input wire clk,
     input wire [15:0] inM,          // M value input  (M = contents of RAM[A])
     input wire [15:0] instruction,  // Instruction for execution
-    input wire rstn,                // Signals whether to re-start the current
+    input wire reset,               // Signals whether to re-start the current
                                     // program (rstn==1) or continue executing
                                     // the current program (rstn==0).
 
-    output reg [15:0] outM,         // M value output
-    output wire writeM,             // Write to M? 
-    output wire [15:0] addressMR,   // Address in data memory (of M) to read
-    output wire [15:0] addressMW,   // Address in data memory (of M) to write
+    output wire [15:0] outM,        // M value output
+    output wire loadM,              // Write to M? 
+    output wire [15:0] addressM,    // Address in data memory (of M) to read
     output reg [15:0] pc            // address of next instruction
 );
 
     // your implementation comes here:
 
-    reg loadM;
-    assign writeM = loadM;
-    assign addressMR = regAn;
-    assign addressMW = regA;
-    localparam FETCH = 0;
-    localparam EXEC = 1;
-    localparam JMP = 2;
-
-    reg [1:0] next_state;
-    reg [1:0] state;
-    always @(posedge clk)
-        if (!rstn) state <= FETCH;
-        else state <= next_state;
-
-    always @(*)
-    begin
-        next_state = FETCH;
-        loadI = 0;
-        inc=0;
-        jmp=0;
-        loadA=0;
-        loadM=0;
-        loadALU=0;
-        loadAI=0;
-        loadAn=0;
-        loadD=0;
-        case (state)
-            FETCH:
-                begin
-                    next_state = EXEC;
-                    loadI = 1;
-                end
-            EXEC:
-                begin
-                    if (regI[15])
-                        begin
-                            next_state = JMP;
-                            loadALU=1;
-                        end
-                    else
-                        begin
-                            next_state = FETCH;
-                            loadAI=1;
-                            inc=1;
-                        end
-                end
-            JMP:
-                begin
-                    next_state = FETCH;
-                    loadA = regI[5];
-                    loadAn = !regI[5];
-                    loadD = regI[4];
-                    loadM = regI[3];
-                    jmp = ((lt & regI[2]) | (eq & regI[1]) | ((!(lt|eq)) & regI[0]));
-                    inc = !jmp;
-                end
-        endcase    
-    end
-
-    reg loadI;    
-    reg [15:0] regI;
-    always @(posedge clk)
-        if (!rstn) regI <= 0;
-        else if (loadI) regI <= instruction;
-    
-    reg [15:0] regM;
-    always @(posedge clk)
-        if (~rstn) regM <= 0;
-        else if (loadI) regM <= inM;
-    
+    assign addressM = regA;
+    wire loadI;
+    wire loadA;
+    wire loadD;
+    assign outM = outALU;    
     wire [15:0] am;
-    assign am = (regI[12]) ? regM : regA;
+    assign am = (instruction[12]) ? inM : regA;
     wire lt;
     wire eq;
-    reg jmp;
-    reg inc;
+    wire jmp;
+    wire inc;
     wire [15:0] outALU;
+        
+    reg [15:0] regA;
+    reg [15:0] regD;
     ALU ALU_0(
         .x(regD),
         .y(am),
-        .zx(regI[11]),
-        .nx(regI[10]),
-        .zy(regI[9]),
-        .ny(regI[8]),
-        .f(regI[7]),
-        .no(regI[6]),
+        .zx(instruction[11]),
+        .nx(instruction[10]),
+        .zy(instruction[9]),
+        .ny(instruction[8]),
+        .f(instruction[7]),
+        .no(instruction[6]),
         .out(outALU),
         .zr(eq),
         .ng(lt)
     );
-    reg loadALU;
+    assign loadI = ~instruction[15];
+    assign loadA = instruction[15] & instruction[5];
+    assign loadD = instruction[15] & instruction[4];
+    assign loadM = instruction[15] & instruction[3];
+    assign jmp = instruction[15] & ((lt & instruction[2]) | (eq & instruction[1]) | ((!(lt|eq)) & instruction[0]));
+    
     always @(posedge clk)
-        if (!rstn) outM <= 0;
-        else outM <= outALU;
-
-    reg [15:0] regAn;
-    reg loadAI;
-    reg loadA;
-    reg loadAn;
-    always @(posedge clk)
-        if (~rstn) regAn <= 0;
-        else if (loadAI) regAn <= regI;
-        else if (loadA) regAn <= outM;
-        else if (loadAn) regAn <= regA;
+        if (reset) pc <= 0;
+        else if (jmp) pc <= regA;
+        else pc <= pc+1;
 
     always @(posedge clk)
-        if (~rstn) pc <= 0;
-        else if (jmp) pc<= regAn;
-        else if (inc) pc <= pc+1;
+        if (reset) regA <= 0;
+        else if (loadI) regA <= instruction;
+        else if (loadA) regA <= outALU;
+        else regA <= regA;
     
-    reg [15:0] regA;
     always @(posedge clk)
-        if (~rstn) regA <= 0;
-        else if (loadI) regA <= regAn;
-    
-    reg [15:0] regD;
-    reg loadD;
-    always @(posedge clk)
-        if (~rstn) regD <= 0;
-        else if (loadD) regD <= outM;
+        if (reset) regD <= 0;
+        else if (loadD) regD <= outALU;
+        else regD <= regD;
     
 endmodule
