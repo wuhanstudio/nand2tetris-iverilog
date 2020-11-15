@@ -15,7 +15,7 @@ module Reset(
     output wire reset
 );
 
-	// your implementation comes here:
+    // your implementation comes here:
 
     // remember that you did it
     reg done = 0;
