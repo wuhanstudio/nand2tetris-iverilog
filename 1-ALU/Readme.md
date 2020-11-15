@@ -47,7 +47,7 @@ make add16_test
 make alu_test
 ```
 
-**When testing, becareful with the difference between LF (Linux) and CRLF (Windows).**
+**When testing, be careful with the difference between LF (Linux) and CRLF (Windows).**
 
 ### What is ALU?
 

@@ -1,5 +1,5 @@
 ## Step 3 - Computer
-Unfortunately, there is no test file, but you can test it on your real hardware.
+Unfortunately, there is no test file in the last section, but you can test it on your real hardware.
 
 ### Reset.v
 

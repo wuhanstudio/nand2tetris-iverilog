@@ -35,7 +35,7 @@ make or_test
 make xor_test
 ```
 
-**When testing, becareful with the difference between LF (Linux) and CRLF (Windows).**
+**When testing, be careful with the difference between LF (Linux) and CRLF (Windows).**
 
 ### File Structure
 
